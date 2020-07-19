@@ -1,15 +1,40 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Depot</title>
+    <title>Pragprog Books Online Store</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <link href="https://cdn.bootcdn.net/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
   </head>
 
   <body class='<%= controller.controller_name %>'>
-    <%= yield %>
+    <div id="banner">
+      <%= image_tag 'logo.svg', alt: 'The Pragmatic Bookshelf' %>
+      <span class='title'><%= @page_title %></span>
+    </div>
+    <div id="columns">
+      <div id="side">
+        <div id="cart">
+          <% if @cart %>
+            <%= render @cart %>
+          <% end %>
+        </div>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="http://www...">Questions</a></li>
+          <li><a href="http://www...">News</a></li>
+          <li><a href="http://www...">Contact</a></li>
+        </ul>
+      </div>
+      <div id="main">
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>
