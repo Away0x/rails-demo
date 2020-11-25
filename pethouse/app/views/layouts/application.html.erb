@@ -10,6 +10,33 @@
   </head>
 
   <body>
+    <div class="navbar clearfix">
+      <div class="container">
+        <a class="navbar-brand" href="/">萌宠之家</a>
+        <ul class="nav right">
+            <li><%= link_to "登录","/login" %></li>
+            <li><%= link_to "注册","/signup" %></li>
+        </ul>
+      </div>
+    </div>
+
     <%= yield %>
+
+    <% if flash.notice %>
+      <div class="notice"><%= flash.notice %></div>
+    <% end %>
+    <div class="footer">
+      <div>
+        <p class="align">©版权所属©  2020</p>
+      </div>
+    </div>
+    <script>
+      var hideNotice = function(){
+        $(".notice").fadeOut("slow");
+      }
+      setTimeout(hideNotice, 2000);
+
+      $('.home-banner').anystretch();
+    </script>
   </body>
 </html>

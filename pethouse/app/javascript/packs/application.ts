@@ -15,6 +15,7 @@
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
-console.log(456)
+require('../vendor/jquery.js');
+require('../vendor/jquery-anystretch.js');
 
 import './hello_react'
