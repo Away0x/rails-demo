@@ -1,4 +1,5 @@
 class AccountsController < ApplicationController
+  before_action :check_login, except: [:signup, :create_account, :login, :create_login, :logout]
 
   def login
   end
@@ -24,7 +25,7 @@ class AccountsController < ApplicationController
     end
 
     #从账户表中查找是否有相同的email，有相同的email说明该邮箱已经被注册过了
-    account = Account.find_by(email:email)
+    account = Account.find_by(email: email)
     #创建一个Account类的对象
     @account = Account.new
     #先判断name、email是否为空
@@ -61,6 +62,47 @@ class AccountsController < ApplicationController
         render :signup
       end
     end
+  end
+
+  def create_login
+    #从params中取email、password的值
+    #strip是去除字符串头部和尾部的空格的方法
+    email = params[:email].strip
+    password_html = params[:password].strip
+    #通过email查找用户
+    account = Account.find_by(email:email)
+    #如果用户存在，进行下面判断
+    if account
+      #用户的身份为管理员，状态为激活，密码正确，可以登录成功
+      if account.role == 1 && account.status == 0
+        #数据库存储的密码解密与用户输入的密码作对比
+        if Des.des_decode(account.password).to_s == password_html
+          session[:account_id] = account.id
+          flash.notice = "登录成功！"
+          redirect_to :root
+        else
+          flash.notice = "用户名密码错误!"
+          render :login
+        end
+      #如果用户为管理员身份，状态为未激活，需要提示激活信息
+      elsif account.role == 1 && account.status == 1
+        flash.notice = "您的用户未激活,请超级管理员激活后再重新登录"
+        render :login
+      #其他类型的客户，密码正确，可以登录
+      else
+        if Des.des_decode(account.password).to_s == password_html
+          flash.notice = "登录成功！"
+          redirect_to :root
+        else
+          flash.notice = "用户名密码错误!"
+          render :login
+        end
+      end
+    #如果用户不存在，需要提示用户去注册
+    else
+      flash.notice = "用户不存在，请先注册"
+      render :login
+    end   
   end
 
 end

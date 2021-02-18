@@ -13,9 +13,32 @@
     <div class="navbar clearfix">
       <div class="container">
         <a class="navbar-brand" href="/">萌宠之家</a>
+        <ul class="nav left">
+          <!--当前有用户登录，并且该用户为管理员，显示关于、用户管理、帖子管理-->
+          <% if @current_user && @current_user.role == 1 %>
+            <li><%= link_to "关于","#" %></li>
+            <li><%= link_to "用户管理","#" %></li>
+            <li><%= link_to "帖子管理", "#"%></li>
+          <!--当前有用户登录，并且该用户为超级管理员，显示关于、管理员账户激活-->
+          <% elsif @current_user && @current_user.role == 2 %>
+            <li><%= link_to "关于","#" %></li>
+            <li><%= link_to "管理员账户激活", "#" %></li>
+          <!--当前有用户登录，并且该用户为普通用户，显示关于-->
+          <% elsif @current_user && @current_user.role == 0 %>
+            <li><%= link_to "关于","#" %></li>
+          <% end %>
+        </ul>
         <ul class="nav right">
+          <!--当前有用户登录，右侧显示该用户的相关信息-->
+          <% if @current_user %>
+            <li><%= link_to "用户名:"+@current_user.name,"#" %></li>
+            <li><%= link_to "权限:"+Account::ROLE[@current_user.role],"#"%></li>
+            <li><%= link_to "退出","#",method:'delete' %></li>
+          <!--当前没有用户登录，右侧显示注册、登录链接-->
+          <% else %>
             <li><%= link_to "登录","/login" %></li>
             <li><%= link_to "注册","/signup" %></li>
+          <% end %>
         </ul>
       </div>
     </div>

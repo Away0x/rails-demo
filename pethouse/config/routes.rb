@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   get 'login' => 'accounts#login'
   get 'signup' => 'accounts#signup'
   post 'create_account' => 'accounts#create_account'
+  post 'create_login' => 'accounts#create_login'
 end

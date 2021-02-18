@@ -18,4 +18,4 @@
 require('../vendor/jquery.js');
 require('../vendor/jquery-anystretch.js');
 
-import './hello_react'
+// import './hello_react'
