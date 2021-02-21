@@ -1,0 +1,16 @@
+<% provide(:title, 'All users') %>
+
+<h1>All users</h1>
+
+<%= will_paginate %>
+
+<ul class="users">
+  <%# @users.each do |user| %>
+    <%#= render user %>
+  <%# end %>
+  <!-- 上面的代码同下，Rails 会把 @users 当作一个 User 对象列表，传给 render 方法后，-->
+  <!-- Rails 会自动遍历这个列表，然后使用局部 视图 _user.html.erb 渲染每个对象-->
+  <%= render @users %>
+</ul>
+
+<%= will_paginate %>

@@ -1,0 +1,10 @@
+<% if @feed_items.any? %>
+  <ol class="microposts">
+    <!--
+      @feed_items 中的元素都是 Micropost 类的实例。所以，Rails 会 在对应资源的视图文件夹中寻找正确的局部视图
+      即 app/views/microposts/_micropost.html.erb
+    -->
+    <%= render @feed_items %>
+  </ol>
+  <%= will_paginate @feed_items, params: { controller: :static_pages, action: :home } %>
+<% end %>

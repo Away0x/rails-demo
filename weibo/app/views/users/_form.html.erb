@@ -1,0 +1,19 @@
+<!-- form_with 通过 Active Record 提供的 new_record? 布尔值方法检测用户是新创建的还是已经存在于数据库中
+    如果 @user.new_record? 返回 true，Rails 发送 POST 请求，否则发送 PATCH 请求 -->
+<%= form_with(model: @user, local: true) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name, class: 'form-control' %>
+
+  <%= f.label :email %>
+  <%= f.email_field :email, class: 'form-control' %>
+
+  <%= f.label :password %>
+  <%= f.password_field :password, class: 'form-control' %>
+
+  <%= f.label :password_confirmation, "Confirmation" %>
+  <%= f.password_field :password_confirmation, class: 'form-control' %>
+
+  <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+<% end %>

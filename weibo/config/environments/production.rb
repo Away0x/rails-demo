@@ -62,8 +62,6 @@ Rails.application.configure do
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "weibo_production"
 
-  config.action_mailer.perform_caching = false
-
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
@@ -119,5 +117,23 @@ Rails.application.configure do
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 
   config.force_ssl = true
+
+  config.action_mailer.perform_caching = false
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  host = '<your heroku app>.herokuapp.com'
+  config.action_mailer.default_url_options = { host: host }
+  ActionMailer::Base.smtp_settings = {
+    :address => 'smtp.sendgrid.net',
+    :port => '587',
+    :authentication => :plain,
+    :user_name => ENV['SENDGRID_USERNAME'],
+    :password => ENV['SENDGRID_PASSWORD'],
+    :domain => 'heroku.com',
+    :enable_starttls_auto => true,
+  }
+
+  # 把上传的文件存储在 Amazon AWS 中 (安装 gem aws-sdk-s3)
+  config.active_storage.service = :amazon
 
 end
