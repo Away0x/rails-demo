@@ -1,0 +1,39 @@
+<h1>登陆</h1>
+<%= form_with url: login_path, scope: :session, local: true do |f| %>
+  <div class="form-group">
+    <div class="col-lg-12">
+      <%= f.label :email, '邮箱或者手机号' %>
+    </div>
+    <div class="col-lg-12">
+      <%= f.email_field :email, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-lg-12">
+      <%= f.label :password, '密码' %>
+    </div>
+    <div class="col-lg-12">
+      <%= f.password_field :password, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-lg-12 clearfix">
+      <div class="pull-right">
+        <a href="#">注册</a>
+        <%= f.label :remember_me, class: "checkbox inline" do %>
+          <%= f.check_box :remember_me %>
+          <span>记住我</span>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-lg-12">
+      <%= f.submit '登录', class: 'col-xs-12 btn btn-primary' %>
+    </div>
+  </div>
+<% end %>
