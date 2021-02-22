@@ -11,12 +11,8 @@ seed:
 console:
 	rails console
 
-build-frontend:
+fd-build:
 	RAILS_ENV=production rails webpacker:compile
 
-help:
-	@echo "make install - install gems"
-	@echo "make test-watch - watch test"
-	@echo "make seed - mock database"
-	@echo "make console - rails console"
-	@echo "build-frontend - build webpack files"
+fd-dev:
+	./bin/webpack-dev-server

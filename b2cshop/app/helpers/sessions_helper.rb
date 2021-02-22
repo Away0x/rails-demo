@@ -1,5 +1,6 @@
-module SessionsHelper
+# frozen_string_literal: true
 
+module SessionsHelper
   # Logs in the given user.
   def log_in(user, remember_me = false)
     session[:user_id] = user.id
@@ -62,5 +63,4 @@ module SessionsHelper
   def store_location
     session[:forwarding_url] = request.original_url if request.get?
   end
-
 end
