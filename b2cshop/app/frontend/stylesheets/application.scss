@@ -12,3 +12,15 @@
   padding: 20px;
   background-color: #EFEFEF;
 }
+
+.disabled_form_field {
+  input {
+    @apply cursor-not-allowed bg-gray-100 text-gray-400;
+  }
+  .dot {
+    display: none;
+  }
+  a {
+    @apply text-gray-400;
+  }
+}

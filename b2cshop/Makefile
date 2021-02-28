@@ -16,3 +16,6 @@ fd-build:
 
 fd-dev:
 	./bin/webpack-dev-server
+
+cred:
+	EDITOR=vim rails credentials:edit
