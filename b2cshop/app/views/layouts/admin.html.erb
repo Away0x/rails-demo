@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>管理平台 - B2cshop</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= javascript_pack_tag 'admin', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_pack_tag 'admin', "data-turbolinks-track": 'reload' %>
+</head>
+
+<body class="bg-white">
+<%= render 'layouts/admin_menu' %>
+<div class="max-w-7xl mx-auto px-4">
+  <% unless flash[:notice].blank? %>
+    <div class="text-center py-2 px-10 bg-blue-200 text-blue-900 rounded my-4"><%= flash[:notice] %></div>
+  <% end %>
+  <% unless flash[:warning].blank? %>
+    <div class="text-center py-2 px-10 bg-yellow-100 text-yellow-500 rounded my-4"><%= flash[:warning] %></div>
+  <% end %>
+
+  <%= yield %>
+</div>
+
+<%= debug(params) if Rails.env.development? %>
+</body>
+</html>

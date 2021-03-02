@@ -30,8 +30,8 @@ class Category < ApplicationRecord
 
   private
 
-    def correct_ancestry
-      self.ancestry = nil if self.ancestry.blank? # ancestry 可为 NULL 但是不能存空字符串
-    end
+  def correct_ancestry
+    self.ancestry = nil if self.ancestry.blank? # ancestry 可为 NULL 但是不能存空字符串
+  end
 
 end

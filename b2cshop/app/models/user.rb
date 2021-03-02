@@ -8,6 +8,7 @@ class User < ApplicationRecord
   # BEGIN ================================ hooks ================================
   before_save :downcase_email
   before_create :create_activation_digest
+  before_create :create_uuid
   # END ================================ hooks ================================
 
   # BEGIN ================================ validators ================================
@@ -67,6 +68,10 @@ class User < ApplicationRecord
     def create_activation_digest
       self.activation_token = User.new_token
       self.activation_digest = User.digest(activation_token)
+    end
+
+    def create_uuid
+      self.uuid = RandomCode.generate_token
     end
 
     def validate_email_or_phone
