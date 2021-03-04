@@ -6,13 +6,14 @@
           <img class="h-8 w-8" src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg" alt="Workflow">
         </div>
         <div class="ml-10 flex items-baseline space-x-4">
-          <a href="<%= admin_root_path %>" class="nav-<%= request.fullpath == admin_root_path ? 'active' : 'normal' %>">Home</a>
+          <a href="<%= admin_root_path %>" class="nav-<%= request.fullpath == admin_root_path ? 'active' : 'normal' %>">Admin</a>
           <a href="<%= admin_categories_path %>" class="nav-<%= request.fullpath == admin_categories_path ? 'active' : 'normal' %>">Category</a>
         </div>
       </div>
       <div>
         <% if logged_in? %>
           <span class="text-white mr-2"><%= current_user.email %></span>
+          <%= link_to "Admin", admin_root_path, class: "text-white cursor-pointer mr-2" %>
           <%= link_to "Logout", logout_path, method: :delete, class: "text-white cursor-pointer" %>
         <% else %>
           <%= link_to "Login", login_path, class: "text-white cursor-pointer" %>

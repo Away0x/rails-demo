@@ -1,6 +1,38 @@
+<h1 class="font-bold text-2xl py-4">
+  <%= @category.new_record? ? "新建分类" : "修改分类 ##{params[:id]}" %>
+</h1>
+
 <div>
-  <h1><%= @category.new_record? ? "新建分类" : "修改分类 ##{params[:id]}" %></h1>
+  <%= form_with model: [:admin, @category], scope: :category, local: true do |f| %>
+    <% unless @category.errors.blank? %>
+      <ul class="mb-3">
+        <% @category.errors.messages.values.flatten.each do |error| %>
+          <li class="text-center py-2 px-10 rounded text-red-400"><%= error %></li>
+        <% end -%>
+      </ul>
+    <% end -%>
+
+    <div class="my-4">
+      <div class="my-2 text-gray-700">
+        <%= f.label :category, '所属分类' %>
+      </div>
+      <div class="my-2">
+        <%= f.select :category, html_options: {class: 'w-full'} do %>
+          <% @root_categories.each do |c| %>
+            <% next if c == @category %>
+            <option value="<%= c.id %>" <%= @category.ancestry == c.id.to_s ? 'selected' : '' %>>
+              <%= c.title %>
+            </option>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
 </div>
+
+
+
+<hr>
 
 <div class="form-body">
   <%= form_for @category,

@@ -11,6 +11,7 @@
   </head>
 
   <body class="bg-white">
+    <%= render 'layouts/menu' %>
     <div class="max-w-7xl mx-auto px-4">
       <% unless flash[:notice].blank? %>
         <div class="text-center py-2 px-10 bg-blue-200 text-blue-900 rounded my-4"><%= flash[:notice] %></div>
