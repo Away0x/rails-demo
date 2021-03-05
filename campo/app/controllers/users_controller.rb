@@ -1,7 +1,14 @@
 class UsersController < ApplicationController
-  before_action :load_identity, :require_unbind_identity
+  include AuthPassword
+  layout 'session'
+
+  before_action :require_auth_password_enabled, only: [:create]
 
   def new
+    if params[:return_to]
+      session[:return_to] = URI(params[:return_to]).path
+    end
+
     @user = User.new
   end
 
@@ -9,25 +16,29 @@ class UsersController < ApplicationController
     @user = User.new user_params
 
     if @user.save
-      Current.identity.update(user: @user)
       sign_in @user
-      redirect_to root_url
+      redirect_to session.delete(:return_to) || root_path
     else
-      render :new, notice: 'Fail'
+      render 'update_form'
     end
+  end
+
+  # constraints by routes
+  # attribute: /name|username|email|password/
+  def validate
+    user = User.new(params[:attribute] => params[:value])
+    user.valid?
+    errors = user.errors[params[:attribute]]
+
+    render json: {
+      valid: errors.empty?,
+      message: errors.first
+    }
   end
 
   private
 
-  def require_unbind_identity
-    if Current.identity.nil?
-      redirect_to new_session_url
-    elsif Current.identity.user.present?
-      redirect_to root_url
-    end
-  end
-
   def user_params
-    params.require(:user).permit(:name, :username, :email)
+    params.require(:user).permit(:name, :username, :email, :password)
   end
 end

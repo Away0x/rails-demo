@@ -13,20 +13,17 @@
 !/log/.keep
 !/tmp/.keep
 
-# Ignore pidfiles, but keep the directory.
-/tmp/pids/*
-!/tmp/pids/
-!/tmp/pids/.keep
-
-# Ignore uploaded files in development.
-/storage/*
-!/storage/.keep
-
 /public/assets
 .byebug_history
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+.env.production
+.env.local
+.env.*.local
+
+.docker-sync
 
 /public/packs
 /public/packs-test
@@ -35,7 +32,4 @@
 yarn-debug.log*
 .yarn-integrity
 
-.env.production
-.env.local
-.env.*.local
-
+/public/uploads

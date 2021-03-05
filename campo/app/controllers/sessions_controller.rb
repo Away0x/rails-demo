@@ -1,16 +1,24 @@
 class SessionsController < ApplicationController
+  include AuthPassword
+  layout 'session'
+
+  before_action :require_auth_password_enabled, only: [:create]
+
   def new
+    if params[:return_to]
+      session[:return_to] = URI(params[:return_to]).path
+    end
   end
 
   def create
-    identity = Identity.find_or_create_by(provider: auth_hash[:provider], uid: auth_hash[:uid])
-    set_identity identity
+    user = User.where('lower(username) = lower(:login) or lower(email) = lower(:login)', login: params[:login]).first
 
-    if identity.user
-      sign_in(identity.user)
-      redirect_to root_path
+    if user&.authenticate(params[:password])
+      sign_in user
+      redirect_to session.delete(:return_to) || root_path
     else
-      redirect_to new_user_path
+      @sign_in_error = true
+      render 'update_form'
     end
   end
 

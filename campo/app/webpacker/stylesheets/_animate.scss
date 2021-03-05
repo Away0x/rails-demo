@@ -1,0 +1,43 @@
+@import "~animate.css";
+
+@keyframes fadeInHalf {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 0.5;
+  }
+}
+
+.fadeInHalf {
+  animation-name: fadeInHalf;
+}
+
+@keyframes fadeOutHalf {
+  from {
+    opacity: 0.5;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+.fadeOutHalf {
+  animation-name: fadeOutHalf;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg)
+    }
+
+    to {
+        transform: rotate(-1turn)
+    }
+}
+
+.spin {
+    animation: spin 2s infinite linear
+}

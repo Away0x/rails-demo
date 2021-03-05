@@ -1,0 +1,294 @@
+---
+zh-CN:
+  activerecord:
+    attributes:
+      comment:
+        content: 内容
+      forum:
+        description: 描述
+        name: 名称
+        slug: Slug
+      post:
+        body: 内容
+        topic_id: 主题 ID
+        user_id: 用户 ID
+      site:
+        description: 描述
+        icon: 图标
+        logo: Logo
+        title: 标题
+      topic:
+        content: 内容
+        forum_id: 版块
+        title: 标题
+        user_id: 用户 ID
+      user:
+        avatar: 头像
+        bio: 简介
+        email: 邮箱
+        name: 全名
+        password: 密码
+        password_confirmation: 密码确认
+        role: 角色
+        username: 用户名
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              invalid: 不符合邮箱格式
+            username:
+              invalid: 必须以字母开头，只接受字母、数字和下划线
+    models:
+      comment: 评论
+      forum: 版块
+      post: 帖子
+      topic: 主题
+      user: 用户
+  admin:
+    attachments:
+      index:
+        attachments: 附件
+        created_at: 创建时间
+        file: 文件
+        file_size: 文件大小
+        id: ID
+        user: 用户
+      show:
+        delete_confirm: 确认删除附件？
+    forums:
+      edit:
+        edit_forum: 编辑板块
+      index:
+        description: 描述
+        forums: 板块
+        id: ID
+        name: 名称
+        slug: Slug
+        topics: 主题数
+      new:
+        new_forum: 新建板块
+    posts:
+      edit:
+        edit_post: 编辑帖子
+      index:
+        body: 内容
+        created_at: 创建时间
+        id: Id
+        posts: 帖子
+        user: 用户
+      new:
+        new_post: 新建帖子
+    settings:
+      form:
+        select_image: 选择图片
+        update_settings: 更新设置
+      show:
+        settings: 设置
+    topics:
+      edit:
+        edit_topic: 编辑主题
+      index:
+        created_at: 创建于
+        id: Id
+        title: 标题
+        topics: 主题
+        user: 用户
+      new:
+        new_topic: 新建话题
+    users:
+      edit:
+        edit_user: 编辑用户
+      index:
+        users: 用户
+      new:
+        new_user: 创建用户
+  auth:
+    users:
+      form:
+        sign_up: 注册
+      new:
+        complete_account_info: 完成账号信息
+  common:
+    password: 密码
+    sign_in: 登录
+    sign_up: 注册
+  default_data:
+    announcement: 公告
+    post_body: |
+      欢迎使用 Campo 论坛。
+
+      您可以到[管理面板](/admin)进行以下操作：
+
+      - 修改站点设置。
+      - 增加/修改子板块。
+      - 管理用户和内容。
+
+      当您准备好后，删除或修改本话题。
+
+      祝您使用愉快！
+    topic_title: 欢迎来到 Campo！
+  errors:
+    messages:
+      blank: 不能为空
+      confirmation: 确认值不匹配
+      max_size_error: 文件需要小于 %{max_size}
+      taken: 已经存在
+  flash:
+    account_is_successfully_updated: 账号更新成功。
+    attachment_is_successfully_destroy: 附件已删除。
+    forum_is_successfully_created: 版块创建成功。
+    forum_is_successfully_updated: 版块更新成功。
+    invalid_token: 无效 Token。
+    password_is_successfully_reset: 密码重置成功。
+    password_is_successfully_updated: 密码更新成功。
+    password_reset_email_has_been_send: 密码重置邮件已发送。
+    post_is_successfully_created: 帖子创建成功。
+    post_is_successfully_updated: 帖子更新成功。
+    require_sign_in: 需要登录。
+    site_is_successfully_created: 网站更新成功。
+    topic_is_successfully_created: 主题创建成功。
+    topic_is_successfully_deleted: 主题删除成功。
+    topic_is_successfully_updated: 主题更新成功。
+    user_is_successfully_created: 用户创建成功。
+    user_is_successfully_updated: 用户更新成功。
+    user_not_found: 没有找到该用户。
+    you_have_no_permissions: 您没有权限。
+  forums:
+    index:
+      forums: 板块
+    show:
+      new_topic: 创建主题
+      no_content: 没有内容。
+  helpers:
+    select:
+      prompt: 请选择
+    submit:
+      create: 创建%{model}
+      submit: 提交%{model}
+      update: 更新%{model}
+  home:
+    index:
+      new_topic: 创建主题
+      no_content: 没有内容。
+      topics: 主题
+  layouts:
+    admin:
+      attachments: 附件
+      dashboard: 面板
+      forums: 板块
+      posts: 帖子
+      settings: 设置
+      topics: 主题
+      users: 用户
+    application:
+      forums: 板块
+      home: 首页
+      more: 更多
+      profile: 个人页面
+      search: 搜索
+      settings: 设置
+      sign_in: 登入
+      sign_out: 登出
+      sign_up: 注册
+  notifications:
+    index:
+      no_content: 没有内容。
+      notifications: 通知
+    notification:
+      mention:
+        mentioned_you_on: 提及你于
+      post:
+        posted_on: 回帖于
+      reply:
+        reply_to_you_on: 回复你于
+  password_resets:
+    edit:
+      password_reset: 重置密码
+    form:
+      change_password: 修改密码
+    show:
+      password_reset: 重置密码
+      password_reset_notice: 输入邮箱地址，您将会收到一封包含密码重置链接的邮件。
+      send_email: 发送邮件
+  posts:
+    form:
+      cancel: 取消
+      reply: 回复
+    post:
+      copy_link: 复制链接
+      copy_link_message: 链接已复制
+      delete: 删除
+      delete_post_confirm: 确认删除该帖子？
+      edit_post: 编辑帖子
+      edited_at: 编辑于
+      replies: 回复
+      reply_to: 回复
+  profile:
+    header:
+      posts: 帖子
+      topics: 主题
+  search:
+    index:
+      no_content: 没有内容。
+      search_result: 搜索结果
+  sessions:
+    auth_providers:
+      or: 或者
+    form:
+      forgot_password: 忘记密码？
+      incorrect_username_or_password: 账号名或密码不正确。
+      username_or_email: 用户名或邮箱
+    new:
+      sign_in: 登入
+      sign_up_account: 注册账号
+  settings:
+    accounts:
+      form:
+        update_account: 更新账号
+        upload_image: 上传图片
+    header:
+      account: 账号
+      password: 密码
+    passwords:
+      form:
+        update_password: 更新密码
+  setup:
+    show:
+      require_sign_up_body: 现在您需要注册一个账号，该账号将成为首位管理员。
+      require_sign_up_title: 恭喜！您已经成功安装 Campo
+      setup_completed_body: 初始化完成后您将被重定向到首页。
+      setup_completed_title: 正在初始化数据
+      sign_up: 注册
+  subscriptions:
+    button:
+      ignore_notifications: 忽略提醒
+      subscribe: 订阅
+      unsubscribe: 不订阅
+  topics:
+    edit:
+      edit_topic: 编辑主题
+    new:
+      new_topic: 创建主题
+    show:
+      copy_link: 复制链接
+      copy_link_message: 链接已复制
+      delete: 删除
+      delete_topic_confirm: 确认删除主题？
+      edit_topic: 编辑主题
+      first_post: 最先回复
+      last_post: 最后回复
+      new_post: 新回复
+      sign_in_to_post: 登录后评论
+    toolbar:
+      delete: 删除
+      delete_topic_confirm: 确认删除该主题？
+      edit_topic: 编辑主题
+      ignore_notifications: 忽略提醒
+    topic:
+      created_by_at: "%{name} 创建于"
+      replied_by_at: "%{name} 回复于"
+  users:
+    new:
+      sign_in_existing_account: 登录已有账号
+      sign_up: 注册

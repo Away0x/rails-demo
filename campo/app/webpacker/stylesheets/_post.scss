@@ -1,0 +1,144 @@
+.post {
+  border-bottom: 1px solid var(--border-color);
+  background: white;
+
+  &.editing,
+  &.replying {
+    padding: 8px;
+    margin: -8px;
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.3);
+    z-index: 1;
+    border-bottom: none;
+  }
+
+  &.editing .hide-on-editing {
+    display: none;
+  }
+
+  &.replying .hide-on-replying {
+    display: none;
+  }
+
+  .post {
+    border-bottom: none;
+  }
+}
+
+.post-context {
+  padding: 6px 6px 0 6px;
+
+  .button-text {
+    color: var(--text-secondary-color);
+
+    &:hover {
+      color: var(--text-primary-color);
+      background: none;
+    }
+  }
+}
+
+.post-content {
+  position: relative;
+  padding-left: 72px;
+}
+
+.post-header {
+  padding: 6px 6px 0 0;
+  display: flex;
+  align-items: center;
+}
+
+.post-avatar {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  line-height: 1;
+
+  img {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    display: block;
+  }
+}
+
+.post-body {
+  padding: 16px 16px 16px 0;
+
+  > *:first-child {
+    margin-top: 0;
+  }
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.post-info {
+  flex: 1;
+  color: var(--text-secondary-color);
+}
+
+.post-username {
+  text-decoration: none;
+  color: var(--text-primary-color);
+
+  span {
+    color: var(--text-secondary-color);
+  }
+
+  &:hover {
+    b {
+      text-decoration: underline;
+    }
+  }
+}
+
+.post-footer {
+  padding: 0 6px 6px 0;
+  margin-top: -6px;
+  margin-left: -12px;
+  display: flex;
+
+  .button-text {
+    color: var(--text-secondary-color);
+    justify-content: flex-start;
+
+    &:hover {
+      color: var(--text-primary-color);
+      background: none;
+    }
+
+    &.active {
+      color: var(--primary-color);
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .post-context {
+    padding: 6px 6px 0 6px;
+  }
+
+  .post-content {
+    padding-left: 0;
+  }
+
+  .post-avatar {
+    position: static;
+    margin-right: 8px;
+  }
+
+  .post-header {
+    padding: 6px 6px 0 16px;
+  }
+
+  .post-body {
+    padding: 16px;
+  }
+
+  .post-footer {
+    padding: 0 6px 6px 6px;
+    margin-left: 0;
+  }
+}

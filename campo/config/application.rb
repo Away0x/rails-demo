@@ -32,14 +32,16 @@ module Campo
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
 
-    config.active_record.schema_format = :sql
-
     # Use redis cache store in all env
     config.cache_store = :redis_cache_store, {
       url: ENV["REDIS_URL"],
       namespace: 'cache',
       expires_in: 1.day
     }
+
+    config.action_mailer.default_url_options = { host: ENV['HOST'] }
+
+    config.i18n.available_locales = %w(en zh-CN)
 
     # Disable unnessary generator
     config.generators do |generate|

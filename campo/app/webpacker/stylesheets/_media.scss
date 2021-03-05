@@ -1,0 +1,20 @@
+.media-link-wrap {
+  margin: 0 -0.5rem;
+}
+
+.media-link {
+  display: flex;
+  padding: 0.5rem;
+  border-radius: $border-radius;
+  color: $body-color;
+
+  &:hover {
+    color: $body-color;
+    background: $gray-100;
+    text-decoration: none;
+  }
+}
+
+.media-body {
+  min-width: 0;
+}

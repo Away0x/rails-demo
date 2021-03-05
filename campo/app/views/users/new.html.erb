@@ -1,17 +1,20 @@
-<h3>Register</h3>
-
-<%= form_for @user do |form| %>
-  <p>
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </p>
-  <p>
-    <%= form.label :username %>
-    <%= form.text_field :username %>
-  </p>
-  <p>
-    <%= form.label :email %>
-    <%= form.text_field :email %>
-  </p>
-  <button type="submit">Submit</button>
-<% end %>
+<div class="session-container">
+  <div class="card">
+    <div class="card-header">
+      <div class="toolbar">
+        <div class="toolbar-title">
+          <%= t '.sign_up' %>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <%= render 'sessions/auth_providers' %>
+      <% if AUTH_PROVIDERS.include?('password') %>
+        <%= render 'form' %>
+      <% end %>
+    </div>
+  </div>
+  <div class="text-align-center">
+    <a href="<%= sign_in_path %>" class="text-secondary"><%= t '.sign_in_existing_account' %></a>
+  </div>
+</div>

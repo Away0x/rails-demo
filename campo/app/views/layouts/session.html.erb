@@ -1,0 +1,18 @@
+<% content_for :body do %>
+  <div class="main">
+    <div class="container">
+      <div class="session-logo">
+        <a href="<%= root_path %>">
+          <% if Current.site %>
+            <img src="<%= Current.site.logo.thumb.url %>">
+          <% else %>
+            <img src="<%= asset_pack_path 'media/images/logo.png' %>">
+          <% end %>
+        </a>
+      </div>
+      <%= yield %>
+    </div>
+  </div>
+<% end %>
+
+<%= render template: 'layouts/base' %>

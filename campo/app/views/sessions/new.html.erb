@@ -1,0 +1,20 @@
+<div class="session-container">
+  <div class="card">
+    <div class="card-header">
+      <div class="toolbar">
+        <div class="toolbar-title">
+          <%= t '.sign_in' %>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <%= render 'auth_providers' %>
+      <% if AUTH_PROVIDERS.include?('password') %>
+        <%= render 'form' %>
+      <% end %>
+    </div>
+  </div>
+  <div class="text-align-center">
+    <a href="<%= sign_up_path %>" class="text-secondary"><%= t '.sign_up_account' %></a>
+  </div>
+</div>
