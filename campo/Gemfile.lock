@@ -76,6 +76,10 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
+    carrierwave (1.2.3)
+      activemodel (>= 4.0.0)
+      activesupport (>= 4.0.0)
+      mime-types (>= 1.16)
     childprocess (3.0.0)
     concurrent-ruby (1.1.8)
     crass (1.0.6)
@@ -105,7 +109,11 @@ GEM
     marcel (0.3.3)
       mimemagic (~> 0.3.2)
     method_source (1.0.0)
+    mime-types (3.3.1)
+      mime-types-data (~> 3.2015)
+    mime-types-data (3.2021.0225)
     mimemagic (0.3.5)
+    mini_magick (4.11.0)
     mini_mime (1.0.2)
     mini_portile2 (2.5.0)
     minitest (5.14.4)
@@ -212,11 +220,13 @@ DEPENDENCIES
   bootsnap (>= 1.4.4)
   byebug
   capybara (>= 3.26)
+  carrierwave (~> 1.2.0)
   dotenv-rails
   hiredis
   http_accept_language
   jbuilder (~> 2.7)
   listen (~> 3.3)
+  mini_magick (>= 4.9.4)
   omniauth
   pg (~> 1.1)
   puma (~> 5.0)
