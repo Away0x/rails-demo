@@ -48,6 +48,7 @@ module Campo
       generate.helper false
       generate.assets false
       generate.view_specs false
+      generate.skip_routes true
     end
   end
 end

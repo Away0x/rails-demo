@@ -2,6 +2,7 @@ module Authenticate
   extend ActiveSupport::Concern
 
   included do
+    # 混入该 module 的 controller 必须呀登录才可以进入
     before_action :authenticate
   end
 
@@ -28,6 +29,7 @@ module Authenticate
     end
   end
 
+  # 登录
   def sign_in(user)
     cookies[:auth_token] = {
       value: user.auth_token,
@@ -36,6 +38,7 @@ module Authenticate
     }
   end
 
+  # 登出
   def sign_out
     cookies[:auth_token] = nil
   end

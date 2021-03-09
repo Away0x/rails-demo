@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_secure_token :auth_token
 
   has_many :identities
+  has_many :topics
 
   mount_uploader :avatar, AvatarUploader
 
@@ -52,6 +53,7 @@ class User < ApplicationRecord
 
   private
 
+  # 生成头像，创建一个缩小的头像
   def generate_default_avatar
     temp_path = "#{Rails.root}/tmp/#{id}_default_avatar.png"
     system(*%W(convert -size 160x160 -annotate 0 #{username[0]} -fill white -pointsize 100 -gravity Center xc:#{DEFAULT_AVATAR_COLORS.sample} #{temp_path}))

@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 
   before_action :require_auth_password_enabled, only: [:create]
 
+  # 注册
   def new
     if params[:return_to]
       session[:return_to] = URI(params[:return_to]).path
@@ -12,6 +13,7 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  # 注册
   def create
     @user = User.new user_params
 
@@ -23,6 +25,7 @@ class UsersController < ApplicationController
     end
   end
 
+  # 字段验证
   # constraints by routes
   # attribute: /name|username|email|password/
   def validate

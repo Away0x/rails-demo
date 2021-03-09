@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'sessions/new'
   root to: 'home#index'
 
   get '/sign_up', to: 'users#new', as: :sign_up
@@ -12,4 +11,16 @@ Rails.application.routes.draw do
   resource :session, only: [:create]
   get '/sign_in', to: 'sessions#new', as: :sign_in
   delete '/sign_out', to: 'sessions#destroy', as: :sign_out
+
+  resources :forums, only: [:index, :show] do
+    collection do
+      post 'validate/:attribute', to: 'forums#validate', constraints: { attribute: /name|slug/ }
+    end
+  end
+
+  ############### admin ###############
+  namespace :admin do
+    root to: 'dashboard#index'
+    resources :users
+  end
 end
