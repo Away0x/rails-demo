@@ -1,0 +1,11 @@
+<%
+  id = if !@post.new_record?
+    "post-#{@post.id}-edit-form"
+  elsif @post.reply_to_post
+    "post-#{@post.reply_to_post_id}-reply-form"
+  else
+    "post-new-form"
+  end
+%>
+
+document.querySelector('#<%= id %>').outerHTML = '<%= j render "form", post: @post %>';

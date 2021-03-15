@@ -26,16 +26,43 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'omniauth'
 # .env
 gem 'dotenv-rails'
-# I18n
+# I18n，请求头中携带语言信息
 gem 'http_accept_language'
-# Attachment
-gem 'carrierwave', '~> 1.2.0'
-# 图像处理
-gem 'mini_magick', '>= 4.9.4'
-# 分页
-gem 'kaminari'
 # Display time to browser local，提供了 local_relative_time 等功能
 gem 'local_time'
+
+# ActiveRecord Advisory Lock
+gem 'with_advisory_lock'
+# 分页
+# rails g  kaminari:config -h
+gem 'kaminari'
+# Full text search
+gem 'cppjieba_rb'
+
+# Attachment
+# rails g uploader -h
+gem 'carrierwave', '~> 1.2.0'
+gem 'carrierwave-aws', '~> 1.3.0', require: false
+gem 'carrierwave-google-storage', require: false
+# 图像处理
+gem 'mini_magick', '>= 4.9.4'
+
+# Markdown
+gem 'redcarpet'
+# Code heighlight
+gem 'rouge'
+# parse html
+gem 'nokogiri', '>= 1.10.4'
+
+# Job queue
+gem 'sidekiq'
+
+# 监控
+gem 'newrelic_rpm', require: false
+gem 'sentry-raven', require: false
+
+# rack middleware
+gem 'rack-attack'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
@@ -46,6 +73,9 @@ gem 'bootsnap', '>= 1.4.4', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+
+  # Useful I18n task
+  gem 'i18n-tasks', '~> 0.9.21', require: false
 
   # Fixtures replacement
   gem 'factory_bot_rails'
@@ -60,6 +90,9 @@ group :development do
   gem 'listen', '~> 3.3'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  # Security scanner, 漏洞检查
+  gem 'brakeman', :require => false
 end
 
 group :test do

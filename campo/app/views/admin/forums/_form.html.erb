@@ -1,0 +1,21 @@
+<%= form_with model: [:admin, @forum], class: 'form', id: 'forum-form', data: { controller: 'form-validation', remote: true } do |form| %>
+  <div class="form-field <%= 'invalid' if @forum.errors[:name].any? %>">
+    <%= form.label :name %>
+    <%= form.text_field :name, data: { 'validate-url': '/forums/validate/name' } %>
+    <div class="validate-message">
+      <%= @forum.errors[:name].first %>
+    </div>
+  </div>
+  <div class="form-field <%= 'invalid' if @forum.errors[:slug].any? %>">
+    <%= form.label :slug %>
+    <%= form.text_field :slug, data: { 'validate-url': '/forums/validate/slug' } %>
+    <div class="validate-message">
+      <%= @forum.errors[:slug].first %>
+    </div>
+  </div>
+  <div class="form-field">
+    <%= form.label :description %>
+    <%= form.text_area :description, class: 'form-control', rows: 3 %>
+  </div>
+  <%= form.submit class: 'button button-contained button-primary' %>
+<% end %>

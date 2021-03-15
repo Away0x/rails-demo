@@ -9,6 +9,14 @@ class User < ApplicationRecord
 
   has_many :identities
   has_many :topics
+  has_many :posts
+  has_many :notifications
+  has_and_belongs_to_many :mentioned_posts, class_name: 'Post', join_table: 'mentions'
+  has_many :subscriptions
+  has_many :subscribed_topics, -> { where(subscriptions: { status: 'subscribed' }) }, through: :subscriptions, source: :topic
+  has_many :ignored_topics, -> { where(subscriptions: { status: 'ignored' }) }, through: :subscriptions, source: :topic
+  has_many :reactions
+  has_many :attachments
 
   mount_uploader :avatar, AvatarUploader
 

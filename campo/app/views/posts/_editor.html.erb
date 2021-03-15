@@ -1,0 +1,65 @@
+<div class="editor" data-controller="editor">
+  <div class="editor-edit-area">
+    <div class="editor-toolbar">
+      <div class="button-group">
+        <button type="button" class="button button-toggle" data-action="editor#bold">
+          <i class="material-icons">format_bold</i>
+        </button>
+        <button type="button" class="button button-toggle" data-action="editor#italic">
+          <i class="material-icons">format_italic</i>
+        </button>
+      </div>
+      <div class="button-group">
+        <button type="button" class="button button-toggle" data-action="editor#heading">
+          <i class="material-icons">title</i>
+        </button>
+        <button type="button" class="button button-toggle" data-action="editor#quote">
+          <i class="material-icons">format_quote</i>
+        </button>
+        <button type="button" class="button button-toggle" data-action="editor#code">
+          <i class="material-icons">code</i>
+        </button>
+        <button type="button" class="button button-toggle display-none-mobile" data-action="editor#link">
+          <i class="material-icons">link</i>
+        </button>
+        <label class="button button-toggle">
+          <i class="material-icons">image</i>
+          <input type="file" accept=".gif,.jpeg,.jpg,.png" data-action="editor#attach" class="display-none" multiple="true">
+        </label>
+        <label class="button button-toggle">
+          <i class="material-icons">attachment</i>
+          <input type="file" accept=".gif,.jpeg,.jpg,.png,.docx,.gz,.log,.pdf,.pptx,.txt,.xlsx,.zip" data-action="editor#attach" class="display-none" multiple="true">
+        </label>
+      </div>
+      <div class="button-group">
+        <button type="button" class="button button-toggle display-none-mobile" data-action="editor#unorderedList">
+          <i class="material-icons">format_list_bulleted</i>
+          <i class="fa fa-list-ul fa-fw"></i>
+        </button>
+        <button type="button" class="button button-toggle display-none-mobile" data-action="editor#orderedList">
+          <i class="material-icons">format_list_numbered</i>
+        </button>
+      </div>
+      <div class="ml-auto">
+        <button type="button" class="button button-toggle" data-action="editor#preview">
+          <i class="material-icons">visibility</i>
+        </button>
+      </div>
+    </div>
+    <%= form.text_area name, rows: 6, data: { target: 'editor.input' } %>
+  </div>
+  <div class="editor-preview-area">
+    <div class="editor-toolbar">
+      <div class="editor-toolbar-title">
+        Previewing
+      </div>
+      <div class="ml-auto">
+        <button type="button" class="button button-toggle" data-action="editor#edit">
+          <i class="material-icons">edit</i>
+        </button>
+      </div>
+    </div>
+    <div class="editor-preview-output" data-target="editor.previewOutput">
+    </div>
+  </div>
+</div>

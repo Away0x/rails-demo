@@ -50,5 +50,7 @@ module Campo
       generate.view_specs false
       generate.skip_routes true
     end
+
+    config.middleware.use Rack::Attack
   end
 end

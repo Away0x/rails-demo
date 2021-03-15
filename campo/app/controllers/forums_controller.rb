@@ -4,7 +4,8 @@ class ForumsController < ApplicationController
   end
 
   def show
-    @forums = Forum.find_by!(slug: params[:id])
+    @forum = Forum.find_by!(slug: params[:id])
+    @topics = @forum.topics.includes(:user).order(activated_at: :desc).page(params[:page])
   end
 
   # 字段验证

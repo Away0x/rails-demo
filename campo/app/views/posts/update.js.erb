@@ -1,0 +1,2 @@
+document.querySelector('#post-<%= @post.id %>').outerHTML = "<%= j render 'post', post: @post %>";
+document.querySelector('#topic').topicController.recalculateIndex();

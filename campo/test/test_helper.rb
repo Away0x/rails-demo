@@ -2,12 +2,24 @@ ENV['RAILS_ENV'] ||= 'test'
 require_relative "../config/environment"
 require "rails/test_help"
 
+module SessionHelper
+  def sign_in_as(user)
+    cookies[:auth_token] = user.auth_token
+  end
+
+  def sign_out
+    cookies[:auth_token] = nil
+  end
+end
+
 class ActiveSupport::TestCase
-  # Run tests in parallel with specified workers
-  parallelize(workers: :number_of_processors)
+  include FactoryBot::Syntax::Methods
+end
 
-  # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
-  fixtures :all
+class ActionDispatch::IntegrationTest
+  include SessionHelper
 
-  # Add more helper methods to be used by all tests here...
+  setup do
+    @site = create(:site)
+  end
 end

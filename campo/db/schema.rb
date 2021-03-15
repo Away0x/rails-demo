@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_09_130529) do
+ActiveRecord::Schema.define(version: 2021_03_15_121609) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "attachments", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "token", null: false
+    t.string "file", null: false
+    t.string "content_type"
+    t.integer "byte_size"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["token"], name: "index_attachments_on_token", unique: true
+    t.index ["user_id"], name: "index_attachments_on_user_id"
+  end
 
   create_table "forums", force: :cascade do |t|
     t.string "name", null: false
@@ -36,6 +48,48 @@ ActiveRecord::Schema.define(version: 2021_03_09_130529) do
     t.index ["user_id"], name: "index_identities_on_user_id"
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.integer "type", null: false
+    t.boolean "read", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["record_type", "record_id"], name: "index_notifications_on_record"
+    t.index ["user_id"], name: "index_notifications_on_user_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.bigint "topic_id", null: false
+    t.bigint "user_id", null: false
+    t.integer "number", null: false
+    t.bigint "reply_to_post_id"
+    t.text "body", null: false
+    t.bigint "edited_user_id"
+    t.datetime "edited_at"
+    t.datetime "deleted_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.tsvector "search_data"
+    t.index ["deleted_at"], name: "index_posts_on_deleted_at"
+    t.index ["edited_user_id"], name: "index_posts_on_edited_user_id"
+    t.index ["reply_to_post_id"], name: "index_posts_on_reply_to_post_id"
+    t.index ["search_data"], name: "index_posts_on_search_data", using: :gin
+    t.index ["topic_id"], name: "index_posts_on_topic_id"
+    t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
+  create_table "reactions", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "post_id", null: false
+    t.integer "type", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_reactions_on_post_id"
+    t.index ["user_id", "post_id"], name: "index_reactions_on_user_id_and_post_id", unique: true
+  end
+
   create_table "sites", force: :cascade do |t|
     t.string "title"
     t.string "description"
@@ -43,6 +97,16 @@ ActiveRecord::Schema.define(version: 2021_03_09_130529) do
     t.string "icon"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "topic_id", null: false
+    t.integer "status", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["topic_id"], name: "index_subscriptions_on_topic_id"
+    t.index ["user_id"], name: "index_subscriptions_on_user_id"
   end
 
   create_table "topics", force: :cascade do |t|

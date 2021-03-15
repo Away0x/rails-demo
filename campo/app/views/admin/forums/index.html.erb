@@ -1,0 +1,45 @@
+<div class="card">
+  <div class="card-header">
+    <div class="toolbar">
+      <div class="toolbar-title">
+        <%= t '.forums' %>
+      </div>
+      <div class="toolbar-action">
+        <a href="<%= new_admin_forum_path %>" class="button button-icon">
+          <i class="material-icons">add</i>
+        </a>
+      </div>
+    </div>
+  </div>
+  <table class="table">
+    <thead>
+    <tr>
+      <th><%= t '.id' %></th>
+      <th><%= t '.name' %></th>
+      <th><%= t '.slug' %></th>
+      <th><%= t '.description' %></th>
+      <th><%= t '.topics' %></th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @forums.each do |forum| %>
+      <tr>
+        <td><%= forum.id %></td>
+        <td><%= forum.name %></td>
+        <td><%= forum.slug %></td>
+        <td><%= truncate forum.description %></td>
+        <td><%= forum.topics_count %></td>
+        <td class="table-action text-align-right">
+          <a href="<%= admin_forum_url(forum) %>" class="button button-icon">
+            <i class="material-icons">chevron_right</i>
+          </a>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <div class="card-footer border-top">
+    <%= render_paginator @forums %>
+  </div>
+</div>

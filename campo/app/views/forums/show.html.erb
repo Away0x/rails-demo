@@ -14,11 +14,11 @@
     </div>
   </div>
 
-  <%#= render 'topics/topic_list' %>
+  <%= render 'topics/topic_list' %>
 
-  <%# if @topics.empty? %>
-<!--    <div class="text-align-center p-4">-->
-      <%#= t '.no_content' %>
-<!--    </div>-->
-  <%# end %>
+  <% if @topics.empty? %>
+    <div class="text-align-center p-4">
+      <%= t '.no_content' %>
+    </div>
+  <% end %>
 </div>

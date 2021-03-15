@@ -8,7 +8,7 @@
       </div>
       <div class="toolbar-brand">
         <a href="<%= admin_root_path %>">
-<!--          <img src="<%#= Current.site.logo.thumb.url %>" class="logo">-->
+          <img src="<%= Current.site.logo.thumb.url %>" class="logo">
           <b class="ml-1 text-secondary">Admin</b>
         </a>
       </div>
@@ -29,24 +29,24 @@
           <a href="<%= admin_root_path %>" class="drawer-item <%= 'active' if controller_name == 'dashboard' %>">
             <i class="material-icons">dashboard</i> <%= t '.dashboard' %>
           </a>
-<!--          <a href="<%#= admin_forums_path %>" class="drawer-item <%#= 'active' if controller_name == 'forums' %>">-->
-<!--            <i class="material-icons">forum</i> <%#= t '.forums' %>-->
-<!--          </a>-->
-<!--          <a href="<%#= admin_topics_path %>" class="drawer-item">-->
-<!--            <i class="material-icons">chat_bubble</i> <%#= t '.topics' %>-->
-<!--          </a>-->
-<!--          <a href="<%#= admin_posts_path %>" class="drawer-item">-->
-<!--            <i class="material-icons">message</i> <%#= t '.posts' %>-->
-<!--          </a>-->
-<!--          <a href="<%#= admin_users_path %>" class="drawer-item">-->
-<!--            <i class="material-icons">person</i> <%#= t '.users' %>-->
-<!--          </a>-->
-<!--          <a href="<%#= admin_attachments_path %>" class="drawer-item">-->
-<!--            <i class="material-icons">attachment</i> <%#= t '.attachments' %>-->
-<!--          </a>-->
-<!--          <a href="<%#= admin_settings_path %>" class="drawer-item">-->
-<!--            <i class="material-icons">settings</i> <%#= t '.settings' %>-->
-<!--          </a>-->
+          <a href="<%= admin_forums_path %>" class="drawer-item <%= 'active' if controller_name == 'forums' %>">
+            <i class="material-icons">forum</i> <%= t '.forums' %>
+          </a>
+          <a href="<%= admin_topics_path %>" class="drawer-item">
+            <i class="material-icons">chat_bubble</i> <%= t '.topics' %>
+          </a>
+          <a href="<%= admin_posts_path %>" class="drawer-item">
+            <i class="material-icons">message</i> <%= t '.posts' %>
+          </a>
+          <a href="<%= admin_users_path %>" class="drawer-item">
+            <i class="material-icons">person</i> <%= t '.users' %>
+          </a>
+          <a href="<%= admin_attachments_path %>" class="drawer-item">
+            <i class="material-icons">attachment</i> <%= t '.attachments' %>
+          </a>
+          <a href="<%= admin_settings_path %>" class="drawer-item">
+            <i class="material-icons">settings</i> <%= t '.settings' %>
+          </a>
         </div>
       </div>
     </div>

@@ -8,7 +8,7 @@
       </div>
       <div class="toolbar-brand">
         <a href="/">
-<!--          <img src="<%#= Current.site.logo.thumb.url %>" class="logo">-->
+          <img src="<%= Current.site.logo.thumb.url %>" class="logo">
         </a>
       </div>
       <div class="toolbar-space">
@@ -22,7 +22,7 @@
         </button>
       </div>
       <div class="toolbar-action search-toolbar-action-form">
-        <%= form_with url: '#', method: 'get', class: 'form search-form', data: { controller: 'turbolink-form', remote: 'false' } do |form| %>
+        <%= form_with url: search_path, method: 'get', class: 'form search-form', data: { controller: 'turbolink-form', remote: 'false' } do |form| %>
           <%= form.text_field :query, value: params[:query], class: 'search-input', placeholder: t('.search') %>
           <button type="submit" class="button button-icon search-button">
             <i class="material-icons">search</i>
@@ -31,7 +31,7 @@
       </div>
       <% if Current.user %>
         <div class="toolbar-action">
-          <a href="#" class="button button-icon">
+          <a href="<%= notifications_path %>" class="button button-icon">
             <i class="material-icons">notifications</i>
           </a>
         </div>
@@ -41,10 +41,18 @@
               <img src="<%= Current.user.avatar.thumb.url %>" class="avatar">
             </button>
             <div class="dropdown-menu dropdown-menu-right">
-              <a href="#" class="dropdown-menu-item">
+              <% if Current.user.admin? %>
+                <a href="<%= admin_root_path %>" class="dropdown-menu-item">
+                  <i class="material-icons">person</i> <%= t '.admin' %>
+                </a>
+                <a href="<%= ui_path %>" class="dropdown-menu-item">
+                  <i class="material-icons">person</i> <%= t '.ui' %>
+                </a>
+              <% end %>
+              <a href="<%= profile_path(username: Current.user.username) %>" class="dropdown-menu-item">
                 <i class="material-icons">person</i> <%= t '.profile' %>
               </a>
-              <a href="#" class="dropdown-menu-item">
+              <a href="<%= settings_account_path %>" class="dropdown-menu-item">
                 <i class="material-icons">settings</i> <%= t '.settings' %>
               </a>
               <div class="divider">
@@ -82,14 +90,14 @@
           <%= t '.forums' %>
         </div>
         <div class="drawer-menu">
-          <%# Forum.order(topics_count: :desc).limit(5).each do |forum| %>
-<!--            <a href="#" class="drawer-item <%#= 'active' if @forum == forum %>">-->
-<!--              <i class="material-icons">forum</i> <%#= forum.name %>-->
-<!--            </a>-->
-          <%# end %>
-<!--          <a href="#" class="drawer-item">-->
-<!--            <i class="material-icons">more_vert</i> <%#= t '.more' %>-->
-<!--          </a>-->
+          <% Forum.order(topics_count: :desc).limit(5).each do |forum| %>
+            <a href="<%= forum_path(id: forum.slug) %>" class="drawer-item <%= 'active' if @forum == forum %>">
+              <i class="material-icons">forum</i> <%= forum.name %>
+            </a>
+          <% end %>
+          <a href="<%= forums_path %>" class="drawer-item">
+            <i class="material-icons">more_vert</i> <%= t '.more' %>
+          </a>
         </div>
       </div>
     </div>

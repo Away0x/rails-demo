@@ -1,0 +1,24 @@
+<div class="card">
+  <div class="card-header border-bottom">
+    <div class="toolbar">
+      <div class="toolbar-title">
+        <%= t '.notifications' %>
+      </div>
+    </div>
+  </div>
+
+  <div data-controller="infinite-page" data-infinite-page-page="<%= @notifications.current_page %>" data-infinite-page-reached-end="<%= @notifications.last_page? %>">
+    <div class="list list-bordered" data-target="infinite-page.container">
+      <%= render partial: 'notification', collection: @notifications, cached: -> notification { [I18n.locale, notification] } %>
+    </div>
+    <div class="infinite-page-loading-placeholder p-2 text-secondary text-align-center display-none">
+      <i class="material-icons animated spin">sync</i>
+    </div>
+  </div>
+
+  <% if @notifications.empty? %>
+    <div class="text-align-center p-4">
+      <%= t '.no_content' %>
+    </div>
+  <% end %>
+</div>
