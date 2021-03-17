@@ -1,33 +1,72 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at https://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  label:
+    login: 'Login'
+    logout: 'Logout'
+    users: 'Users'
+    current: 'Current'
+    playlists: 'Playlists'
+    favorites: 'Favorites'
+    albums: 'Albums'
+    artists: 'Artists'
+    songs: 'Songs'
+    settings: 'Settings'
+    create: 'Create'
+    play_all: 'Play all'
+    clear: 'Clear'
+    delete: 'Delete'
+    rename: 'Rename'
+    tracks: 'Tracks'
+    save: 'Save'
+    sync: 'Sync'
+    integration: 'Integration'
+    close: 'Close'
+    more: 'More'
+    appears_on: 'Appears On'
+    name: 'Name'
+    artist: 'Artist'
+    duration: 'Duration'
+    actions: 'Actions'
+    edit: 'Edit'
+  error:
+    login: 'Wrong email or password'
+    media_path_blank: 'Media path is not exist'
+    media_path_unreadable: 'Media path is unreadable'
+    forbidden: "Sorry, you do not have permission to visit it"
+    not_found: "The page you were looking for doesn't exist"
+    unprocessable_entity: 'The change you wanted was rejected'
+    internal_server_error: "We're sorry, but something went wrong"
+    already_in_playlist: "Add to playlist fail, song already in playlist"
+  success:
+    delete: 'Delete successfully'
+    create: 'Created successfully'
+    update: 'Updated successfully'
+    add_to_playlist: 'Add to playlist successfully'
+    delete_from_playlist: 'Delete from playlist successfully'
+  text:
+    no_items: 'No items'
+    add_to_playlist: 'Add to playlist'
+    update_profile: 'Update profile'
+    manage_users: 'Manage users'
+    add_user: 'Add user'
+    create_user: 'Create User'
+    media_path: 'Media path'
+    various_artists: 'Various Artists'
+    unknown_artist: 'Unknown Artist'
+    unknown_album: 'Unknown Album'
+    go_back: 'Go back'
+    repeat_mode: 'Repeat mode'
+    single_mode: 'Single mode'
+    shuffle_mode: 'Shuffle mode'
+    previous_song: 'Previous song'
+    next_song: 'Next song'
+    play_song: 'Play song'
+    pause_song: 'Pause song'
+    toggle_favorite: 'Toggle favorite'
+    expand_player: 'Expand player'
+    collapse_player: 'Collapse player'
+    personal: 'Personal'
+    see_all: 'See All'
+    edit_album: 'Edit Album'
+    edit_artist: 'Edit Artist'
+    album_cover: 'Album cover'
+    artist_cover: 'Artist cover'

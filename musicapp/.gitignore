@@ -30,7 +30,15 @@
 
 /public/packs
 /public/packs-test
+/public/uploads
 /node_modules
-/yarn-error.log
+
+.DS_Store
+*.swp
 yarn-debug.log*
 .yarn-integrity
+.envrc
+/.direnv
+/.gems
+/.pg_data
+/.redis_data
