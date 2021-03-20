@@ -1,0 +1,8 @@
+a {
+  text-decoration: none;
+  color: rgb(var(--text-primary-color));
+}
+
+a:hover {
+  color: rgb(var(--link-active-color));
+}

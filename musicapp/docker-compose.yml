@@ -1,8 +1,9 @@
 version: '3.4'
 services:
   app: &app_base
+    build:
+      context: .
     container_name: 'blackcandy_app'
-    image: blackcandy/blackcandy
     volumes:
       - ./log:/app/log
       - /media_data:/media_data

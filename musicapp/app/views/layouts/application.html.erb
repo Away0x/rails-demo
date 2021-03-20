@@ -1,16 +1,19 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Musicapp</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<% content_for :body do %>
+  <div class='o-flex u-vw-100 u-vh-100'>
+    <aside id='js-sidebar' class='o-flex__item o-flex__item--shrink-0 o-flex o-flex--column-reverse c-sidebar' data-turbolinks-permanent>
+      <%#= render 'layouts/sidebar' %>
+    </aside>
+    <div class='o-flex__item o-flex__item--grow-1 u-overflow-auto'>
+      <%= render 'layouts/main' do %>
+        <%= yield %>
+      <% end %>
+    </div>
+  </div>
+  <div id='js-overlay' class='c-overlay c-overlay--fixed c-overlay--blur u-display-none'></div>
+  <div id='js-global-loader' class='c-overlay c-overlay--fixed c-overlay--blur u-display-none' data-controller='loader' data-loader-target='indicator'>
+    <%= loader_tag size: 'large' %>
+  </div>
+  <%= render 'shared/dialog' %>
+<% end %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
-  <body>
-    <%= yield %>
-  </body>
-</html>
+<%= render template: 'layouts/base' %>

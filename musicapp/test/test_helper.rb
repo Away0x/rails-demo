@@ -1,6 +1,12 @@
 ENV['RAILS_ENV'] ||= 'test'
-require_relative "../config/environment"
-require "rails/test_help"
+require_relative '../config/environment'
+require 'rails/test_help'
+require 'webmock/minitest'
+require 'minitest/mock'
+require 'database_cleaner'
+
+DatabaseCleaner.strategy = :transaction
+DatabaseCleaner.orm = :active_record
 
 class ActiveSupport::TestCase
   # Run tests in parallel with specified workers

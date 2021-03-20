@@ -8,10 +8,10 @@ require "active_record/railtie"
 require "active_storage/engine"
 require "action_controller/railtie"
 require "action_mailer/railtie"
-require "action_mailbox/engine"
-require "action_text/engine"
+# require "action_mailbox/engine"
+# require "action_text/engine"
 require "action_view/railtie"
-require "action_cable/engine"
+# require "action_cable/engine"
 # require "sprockets/railtie"
 require "rails/test_unit/railtie"
 
@@ -31,6 +31,15 @@ module Musicapp
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    config.action_view.form_with_generates_remote_forms = true
+
+    config.generators do |generate|
+      generate.helper false
+      generate.assets false
+      generate.view_specs false
+      generate.skip_routes true
+    end
 
     config.exceptions_app = self.routes
   end
