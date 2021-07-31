@@ -1,0 +1,16 @@
+one:
+  title: 'first product'
+  price: 1
+  published: 1
+  shop: one
+  # 库存
+  quantity: 10
+
+
+two:
+  title: 'second product'
+  price: 1
+  published: 1
+  shop: two
+  # 库存
+  quantity: 10
