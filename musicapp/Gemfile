@@ -23,7 +23,7 @@ gem 'bcrypt', '~> 3.1.7'
 # Get meta data from audio file
 gem 'wahwah', '~> 1.1.1'
 # Use sidekiq for backgroud job
-gem 'sidekiq', '~> 6.1.2'
+gem 'sidekiq', '~> 6.2.1'
 # Pagination
 gem 'pagy', '~> 3.5.0'
 # For image attachment
