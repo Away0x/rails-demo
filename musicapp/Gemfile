@@ -29,7 +29,7 @@ gem 'pagy', '~> 3.5.0'
 # For image attachment
 gem 'carrierwave', '~> 2.0'
 # For API request
-gem 'httparty', '~> 0.17.0'
+gem 'httparty', '~> 0.21.0'
 # For PostgreSQL's full text search
 gem 'pg_search', '~> 2.3.2'
 # For browser detection: https://rubygems.org/gems/browser
